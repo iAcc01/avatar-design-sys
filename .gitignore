@@ -1,0 +1,19 @@
+node_modules/
+dist/
+
+# D2C 临时上下文（按 figma-id 生成，不入库）
+_design-context/
+
+# 系统/编辑器
+.DS_Store
+.vscode/
+.idea/
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 不入库的本地构建临时文件
+*.tsbuildinfo

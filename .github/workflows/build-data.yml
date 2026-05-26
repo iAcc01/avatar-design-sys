@@ -1,0 +1,63 @@
+name: Build Data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tokens/**'
+      - 'scripts/build-data.ts'
+      - 'scripts/sync-shadcn-registry.ts'
+      - 'scripts/build-lucide-index.ts'
+      - 'scripts/index.ts'
+      - '.github/workflows/build-data.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 使用默认的 GITHUB_TOKEN，配合下面 git push 即可
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 注意：@tdesign/d2c-utils 是腾讯内网私服包，公网 runner 无法解析。
+      # 该包仅 get-figma-context.ts / compare-images.ts 使用，CI 的 build 链路用不到。
+      # 这里安装最小依赖集，跳过 @tdesign/d2c-utils。
+      - name: Install minimal deps
+        run: |
+          npm i --no-save --no-package-lock --ignore-scripts \
+            tsx@^4.7.0 \
+            typescript@^5.4.0 \
+            lucide-static@^0.453.0 \
+            @types/node@^20.11.0
+
+      - name: Build tokens
+        run: npx tsx scripts/build-data.ts
+
+      - name: Build lucide index
+        run: npx tsx scripts/build-lucide-index.ts
+
+      - name: Sync shadcn registry
+        run: npx tsx scripts/sync-shadcn-registry.ts
+        continue-on-error: true # 上游 ui.shadcn.com 偶发不可达时不阻塞产物提交
+
+      - name: Commit data/
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ references/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(data): rebuild data/ [skip ci]"
+            git push
+          fi

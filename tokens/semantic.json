@@ -1,0 +1,83 @@
+{
+  "$schema": "Semantic tokens aligned with shadcn/ui default naming. Values reference primitive tokens defined in color-palette.md / spacing.md / typography.md / radius.md.",
+  "light": {
+    "background":           "var(--neutral-white)",
+    "foreground":           "var(--neutral-10)",
+
+    "card":                 "var(--neutral-white)",
+    "card-foreground":      "var(--neutral-10)",
+
+    "popover":              "var(--neutral-white)",
+    "popover-foreground":   "var(--neutral-10)",
+
+    "primary":              "var(--blue-7)",
+    "primary-foreground":   "var(--neutral-white)",
+
+    "secondary":            "var(--neutral-1)",
+    "secondary-foreground": "var(--neutral-9)",
+
+    "muted":                "var(--neutral-1)",
+    "muted-foreground":     "var(--neutral-6)",
+
+    "accent":               "var(--blue-1)",
+    "accent-foreground":    "var(--blue-8)",
+
+    "destructive":          "var(--red-6)",
+    "destructive-foreground":"var(--neutral-white)",
+
+    "success":              "var(--green-7)",
+    "success-foreground":   "var(--neutral-white)",
+
+    "warning":              "var(--yellow-7)",
+    "warning-foreground":   "var(--neutral-white)",
+
+    "info":                 "var(--lake-blue-8)",
+    "info-foreground":      "var(--neutral-white)",
+
+    "border":               "var(--neutral-2)",
+    "input":                "var(--neutral-2)",
+    "ring":                 "var(--blue-7)",
+
+    "radius":               "var(--radius-md)"
+  },
+  "dark": {
+    "background":           "var(--neutral-10)",
+    "foreground":           "var(--neutral-1)",
+
+    "card":                 "var(--neutral-9)",
+    "card-foreground":      "var(--neutral-1)",
+
+    "popover":              "var(--neutral-9)",
+    "popover-foreground":   "var(--neutral-1)",
+
+    "primary":              "var(--blue-6)",
+    "primary-foreground":   "var(--neutral-10)",
+
+    "secondary":            "var(--neutral-8)",
+    "secondary-foreground": "var(--neutral-1)",
+
+    "muted":                "var(--neutral-8)",
+    "muted-foreground":     "var(--neutral-4)",
+
+    "accent":               "var(--blue-9)",
+    "accent-foreground":    "var(--blue-2)",
+
+    "destructive":          "var(--red-5)",
+    "destructive-foreground":"var(--neutral-10)",
+
+    "success":              "var(--green-6)",
+    "success-foreground":   "var(--neutral-10)",
+
+    "warning":              "var(--yellow-6)",
+    "warning-foreground":   "var(--neutral-10)",
+
+    "info":                 "var(--lake-blue-7)",
+    "info-foreground":      "var(--neutral-10)",
+
+    "border":               "var(--neutral-8)",
+    "input":                "var(--neutral-8)",
+    "ring":                 "var(--blue-6)",
+
+    "radius":               "var(--radius-md)"
+  }
+}
